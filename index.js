@@ -1,25 +1,32 @@
 // Generate 2 random numbers (1..6) and assign them to a string that will have the src attribute value
-let randomNumber1 = Math.floor(Math.random() * 6) + 1;
-let randomNumber2 = Math.floor(Math.random() * 6) + 1;
+let randomNumber1;
+let randomNumber2;
+let randomDiceImage1;
+let randomDiceImage2;
 
-let randomDice1 = "images/dice" + randomNumber1 + ".png";
-let randomDice2 = "images/dice" + randomNumber2 + ".png";
+// Generate random number
+generateRandomDice()
 
-// Grab players dice img element and set it to the randomly generated dice
-let player1ImageElement = document.getElementsByClassName("img1")[0];
-player1ImageElement.setAttribute("src", randomDice1);
-
-let player2ImageElement = document.getElementsByClassName("img2")[0];
-player2ImageElement.setAttribute("src", randomDice2);
-
+function generateRandomDice(){
+     randomNumber1 = Math.floor(Math.random() * 6) + 1;
+     randomNumber2 = Math.floor(Math.random() * 6) + 1;
+     // Assign images
+     randomDiceImage1 = "images/dice" + randomNumber1 + ".png";
+     randomDiceImage2 = "images/dice" + randomNumber2 + ".png";
+     // Put the random dice on the images
+     let player1ImageElement = document.getElementsByClassName("img1")[0];
+     player1ImageElement.setAttribute("src", randomDiceImage1);
+     
+     let player2ImageElement = document.getElementsByClassName("img2")[0];
+     player2ImageElement.setAttribute("src", randomDiceImage2);
+}
 
 // Change the H1 text, depending on the winner
-let winnerTexElement = document.querySelector("h1");
-console.log("Initial text: " + winnerTexElement.innerText);
 printWinner(randomNumber1, randomNumber2);
 
-
 function printWinner(randomNumber1, randomNumber2){
+
+     let winnerTexElement = document.querySelector("h1");
      
      if (randomNumber1 > randomNumber2){
           winnerTexElement.innerText = "🏆 Player 1 wins!";
@@ -36,3 +43,10 @@ function printWinner(randomNumber1, randomNumber2){
 }
 
 
+// Button logic
+const rollDiceButton = document.getElementById("roll-dice-button");
+rollDiceButton.addEventListener("click", (event) => {
+     console.log("button clicked!");
+     generateRandomDice();
+     printWinner(randomNumber1, randomNumber2);
+});

@@ -1,7 +1,15 @@
 .container {
-  width: 70%;
+  width: 80%;
   margin: auto;
   text-align: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.dice-container {
+  display: flex;
+  justify-content: center;
+  gap: 100px;
 }
 
 .dice {
@@ -32,10 +40,14 @@ img {
   width: 80%;
 }
 
-footer {
-  margin-top: 5%;
-  color: #EEEEEE;
-  text-align: center;
-  font-family: 'Indie Flower', cursive;
-
+#roll-dice-button {
+  align-self: center;
+  margin-top: 100px;
+  background-color: #4ECCA3;
+  font-family: 'Lobster', cursive;
+  font-size: 3rem;
+  padding: 15px;
+  border-radius: 15px;
+  border-color: black;
+  border-width: 10px;
 }
